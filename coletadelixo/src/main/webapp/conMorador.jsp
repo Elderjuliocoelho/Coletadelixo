@@ -50,7 +50,7 @@
 		<li><a href="http://localhost:8080/coletadelixo/CadastroColeta.jsp">Coleta</a></li>
 </ul>
 <%
-  Dao<Morador,Integer> dao = new Dao<Morador,Integer>();
+  MoradorDao dao = new MoradorDao();
   List<Morador> moradores = dao.findAll(Morador.class);
 %>
 <table class="table">
@@ -64,7 +64,9 @@
 	  </tr>
 	</thead>
     <tbody>
-    <%for(Morador morador:moradores){ %>
+	    <%
+	    for(Morador morador:moradores){ 
+	    %>
     	<tr>
     		<td><%=morador.getId() %></td>
     		<td><%=morador.getNome() %></td>
