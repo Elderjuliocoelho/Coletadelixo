@@ -21,6 +21,9 @@ public class Coleta {
 	@Enumerated(EnumType.STRING)
 	private LocalDescarte LocalDescarte;
 	
+	@Enumerated(EnumType.STRING)
+	private LixoTipo lixotipo;
+	
 	public Coleta() {
 		
 	}
@@ -50,6 +53,14 @@ public class Coleta {
 	}
 	public void setLocalDescarte(LocalDescarte localDescarte) {
 		LocalDescarte = localDescarte;
+	}
+
+	public LixoTipo getLixotipo() {
+		return lixotipo;
+	}
+
+	public void setLixotipo(LixoTipo lixotipo) {
+		this.lixotipo = lixotipo;
 	}
 	
 	

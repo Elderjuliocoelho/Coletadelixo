@@ -2,6 +2,8 @@ package br.computacao.coletadelixo.servlets;
 
 
 import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,18 +39,17 @@ public class ServletMorador extends HttpServlet{
 	
 		dao.save(novoMorador);
 		}
-		else {
-		long moradorid=Long.parseLong(request.getParameter("moradorid"));
+		else {			
+		Integer moradorid=Integer.parseInt(request.getParameter("moradorid"));
 		Morador morador= dao.findById(Morador.class,moradorid).get();
-				
+					
 		morador.setNome(request.getParameter("nome-morador"));
 		morador.setCpf(request.getParameter("Cpf"));
 		morador.setTelefone(request.getParameter("Telefone-Morador"));
-				
+					
 		dao.update(morador);
-		}
+		} 
 			//response.getWriter().append(novoCurso.getNome());
 		response.sendRedirect("conMorador.jsp");
-			
 		}
 }

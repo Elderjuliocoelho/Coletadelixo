@@ -37,7 +37,7 @@ public class ServletEmpresa extends HttpServlet {
 	empdao.save(novaEmpresa);
 	}
 	else {
-	long empresaid=Long.parseLong(request.getParameter("empresaid"));
+	Integer empresaid=Integer.parseInt(request.getParameter("empresaid"));
 	Empresa empresa= empdao.findById(Empresa.class,empresaid).get();
 			
 	empresa.setNome(request.getParameter("nome-empresa"));

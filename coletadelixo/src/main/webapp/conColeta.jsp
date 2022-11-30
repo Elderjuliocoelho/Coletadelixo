@@ -1,6 +1,6 @@
 <%@page import="java.util.List"%>
-<%@page import="br.computacao.coletadelixo.dao.EmpresaDao"%>
-<%@page import="br.computacao.coletadelixo.model.Empresa"%>
+<%@page import="br.computacao.coletadelixo.dao.ColetaDao"%>
+<%@page import="br.computacao.coletadelixo.model.Coleta"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -34,7 +34,6 @@
 #excluir{
 	background-color:red;
 }
-
 </style>
 <body>
 
@@ -43,34 +42,34 @@
 </ul>
 
 <%
-  EmpresaDao dao = new EmpresaDao();
-  List<Empresa> empresas = dao.findAll(Empresa.class);
+  Dao<Coleta,Integer> dao = new Dao<Contador,Integer>();	
+ // ColetaDao dao = new ColetaDao();
+  List<Coleta> coletas = dao.findAll(Coleta.class);
 %>
 
 <table class="table">
 	<thead>
 	  <tr>
 		<th>ID</th>
-		<th>Nome</th>
-		<th>Descricao</th>
-		<th>Telefone</th>
-		<th>Responsavel</th>
-		<th></th>
+		<th>Morador</th>
+		<th>Tipo</th>
+		<th>Local</th>
+		<th>Peso</th>
 	  </tr>
 	</thead>
     <tbody>
-    <%for(Empresa empresa:empresas){ %>
+    <%for(Coleta coleta:coletas){ %>
     	<tr>
-    		<td><%=empresa.getId() %></td>
-    		<td><%=empresa.getNome() %></td>
-    		<td><%=empresa.getDescricao() %></td>
-    		<td><%=empresa.getTelefone() %></td>
-    		<td><%=empresa.getResponsavel() %></td>
+    		<td><%=coleta.getId() %></td>
+    		<td><%=coleta.getMorador() %></td>
+    		<td><%=coleta.getLixotipo() %></td>
+    		<td><%=coleta.getLocalDescarte() %></td>
+    		<td><%=coleta.getPeso() %></td>
     		<td>
-    			<a class="btn btn-secondary btn-sm" id="edit"href="editEmpresa.jsp?id=<%=empresa.getId()%>">Editar</a>
+    			<a class="btn btn-secondary btn-sm"id="edit" href="editColeta.jsp?id=<%=coleta.getId()%>">Editar</a>
     		</td>
     		<td>
-    			<a class="btn btn-secondary btn-sm" id="excluir"href="<%= request.getContextPath() %> %>controllerEmpresa?id=<%=empresa.getId()%>">Excluir</a>
+    			<a class="btn btn-secondary btn-sm"id="exlcuir" href="<%= request.getContextPath() %> %>controllerEmpresa?id=<%=coleta.getId()%>">Excluir</a>
     		</td>
     	</tr>
     	<%} %>
